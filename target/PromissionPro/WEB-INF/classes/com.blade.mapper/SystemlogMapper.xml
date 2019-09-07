@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blade.mapper.SystemlogMapper" >
+  <resultMap id="BaseResultMap" type="com.blade.domain.Systemlog" >
+    <id column="id" property="id1" jdbcType="BIGINT" />
+    <result column="optime1" property="optime1" jdbcType="TIMESTAMP" />
+    <result column="ip1" property="ip1" jdbcType="VARCHAR" />
+    <result column="function1" property="function1" jdbcType="VARCHAR" />
+    <result column="params1" property="params1" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from systemlog
+    where id1 = #{id1,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.blade.domain.Systemlog" >
+    insert into systemlog (id1, optime1, ip1,
+      function1, params1)
+    values (#{id1}, #{optime1}, #{ip1},
+      #{function1}, #{params1})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.blade.domain.Systemlog" >
+    update systemlog
+    set optime1 = #{optime1,jdbcType=TIMESTAMP},
+      ip1 = #{ip1,jdbcType=VARCHAR},
+      function1 = #{function1,jdbcType=VARCHAR},
+      params1 = #{params1,jdbcType=VARCHAR}
+    where id1 = #{id1,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id1, optime1, ip1, function1, params1
+    from systemlog
+    where id1 = #{id1,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id1, optime1, ip1, function1, params1
+    from systemlog
+  </select>
+</mapper>
